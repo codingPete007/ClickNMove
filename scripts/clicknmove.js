@@ -208,3 +208,11 @@ function move(property, operator) {
     }
   }, 5)
 }
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 800) {
+    info.textContent = 'Please increase your window size to play.';
+  } else {
+    info.textContent = 'Click an open square to move the player.';
+  }
+});
