@@ -46,8 +46,6 @@ gameContainer.addEventListener('click', (event) => {
     clickedSquare.classList.toggle('goal-square');
 
     const movePath = createMovePath(clickedSquare);
-    console.log('clicked: ', clickedSquare);
-    console.log('path: ', movePath);
     movePlayer(movePath);
   } else if (characterMoving) {
     alert('Please wait.');
@@ -64,10 +62,7 @@ function createMovePath(destination) {
   let parent = [];
 
   while (queue.length > 0) {
-    console.log('queue: ', queue);
     const currentSquare = queue.shift();
-    console.log('current: ', currentSquare.id);
-    console.log('queue: ', queue);
 
     if (currentSquare.id === destination.id) {
       let shortestPath = [];
@@ -97,19 +92,16 @@ function createMovePath(destination) {
     }
 
     const adjacentOpenSquares = checkAdjacentSquares(currentSquare).filter((adjSquare) => adjSquare.classList.contains('open'));
-    console.log('adjacent: ', adjacentOpenSquares);
 
     for (let i = 0; i < adjacentOpenSquares.length; i++) {
-      console.log(i);
       if (!visited.has(adjacentOpenSquares[i])) {
         queue.push(adjacentOpenSquares[i]);
         visited.add(adjacentOpenSquares[i]);
         parent.push(currentSquare.id);
-        console.log(parent);
       }
     }
   }
-  console.log('TargetSquare not found!')
+  console.log('Target square not found!')
   return false;
 }
 
@@ -146,7 +138,6 @@ function movePlayer(idPath) {
       idPath = [];
       characterMoving = false;
       info.textContent = 'Success!';
-      console.log(playerPosition)
       return;
     }
   }, 255);
@@ -192,7 +183,6 @@ function move(property, operator) {
   };
 
   const operation = operators[operator];
-  console.log(player);
 
   if (!operation) {
     console.error('Invalid operator: ', operator);
@@ -201,7 +191,6 @@ function move(property, operator) {
 
   interval = setInterval(() => {
     player.style[property] = operation(parseInt(player.style[property] || 0, 10), 1) + 'px';
-    console.log('moving...');
     if (++i >= 51) {
       clearInterval(interval);
       return;
