@@ -28,6 +28,16 @@ h1 {
   margin: 20px auto;
 }
 
+.movement-container {
+  position: absolute;
+  width: 764px;
+  height: 764px;
+  top: 113px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
 .row {
   display: flex;
   gap: 1px;
@@ -85,6 +95,7 @@ h1 {
 .goal-square {
   background-color: pink;
   border-radius: 4px;
+  z-index: -2;
 }
 
 .player-info {
