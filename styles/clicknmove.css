@@ -110,3 +110,13 @@ h1 {
 .player-info > img {
   margin-right: 30px;
 }
+
+@media (max-width: 799px) {
+  .game-container {
+    display: none;
+  }
+  
+  .player {
+    display: none;
+  }
+}
